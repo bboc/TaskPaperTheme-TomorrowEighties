@@ -1,8 +1,8 @@
 // Base -----------------------------------
-@font-family: Hack, Source Code Pro;
-@font-family: -apple-user;
+//@font-family: Hack, Source Code Pro;
+//@font-family: -apple-user;
 @font-family: Lato;
-@base-font-size: 16;
+@base-font-size: 18;
 @user-font-size: $USER_FONT_SIZE;
 @ui-scale: @user-font-size / @base-font-size;
 @line-height-multiple: 1.4;
@@ -36,6 +36,7 @@
 @selection-color: @_selection;
 @invisibles-color: fade(@tint-color, 50%);
 @guide-color: lighten(@fg_color, 26%);
+
 
 window {
   appearance: NSAppearanceNameVibrantLight;
@@ -76,45 +77,29 @@ editor {
 
 item[data-type=project] {
   font-size: floor(26 * @ui-scale);
+  paragraph-spacing-before: 15;
+  paragraph-spacing-after: 3;
+  font-weight: 900;
+  color: fade(@project-color, 80%);
 }
 
 item[depth=1][data-type=project] {
-    font-weight: 900;
     color: @project-color;
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
     > run[content] {
-        text-decoration: underline;
+        text-decoration: none;
     }
 }
 item[depth=2][data-type=project] {
-    font-weight: 900;
     font-size: floor(22 * @ui-scale);
-    // font-size: 17;
-    color: fade(@project-color, 100%);
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
 }
 item[depth=3][data-type=project] {
-    font-weight: 900;
     font-size: floor(20 * @ui-scale);
-    color: fade(@project-color, 100%);
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
 }
 item[depth=4][data-type=project] {
-    font-weight: 900;
     font-size: floor(18 * @ui-scale);
-    color: fade(@project-color, 100%);
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
 }
 item[depth=5][data-type=project] {
-    font-weight: 900;
     font-size: floor(16 * @ui-scale);
-    color: fade(@project-color, 100%);
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
 }
 item[data-ol][data-type=project],
 item[data-ul][data-type=project] {
@@ -126,6 +111,7 @@ item[data-ul][data-type=project] {
 }
 item[data-type="task"] {
     font-style: normal;
+    paragraph-spacing-after: 0;
 }
 item[data-type="note"] {
     // font-size: 14;
@@ -134,6 +120,7 @@ item[data-type="note"] {
     paragraph-spacing-after: 5;
     font-style: italic;
 }
+
 
 // Handle styles -----------------------------------
 item {
@@ -382,37 +369,9 @@ item[data-done] {
         color: fade(@text-color, 35%);
     }
 }
-run[link] {
-    cursor: pointer;
-    color: #1EAEDB;
-    text-underline: NSUnderlineStyleSingle;
-}
-run[lead] {
-    color: fade(@text-color, 50%);
-    text-underline: NSUnderlineStyleNone;
-}
-// run[link^="button"] {
-//   color: @text-color;
-//   text-underline: NSUnderlineStyleNone;
-//   font-weight: 100;
-// }
-run[link^="filter"] {
-    color: @text-color;
-    text-underline: NSUnderlineStyleNone;
-}
-run[tag] {
-    font-size: @user-font-size;
-    font-style: normal;
-    font-weight: normal;
-    color: fade(@text-color, 65%);
-    text-underline: NSUnderlineStyleNone;
-}
-run[tagvalue] {
-  color: fade(@text-color, 100%);
-}
 
+// Project Tag Styles -----------------------------------
 
-// Project Styles
 item[data-section][data-type=project] {
   > run[tag] {
     color: @bg_color;
@@ -473,4 +432,35 @@ item[data-status="completed"][data-type=project] {
       text-strikethrough-color: fade(@text-color, 35%);
       color: fade(@text-color, 35%);
   }
+}
+
+// -------------------------------------------------------
+
+run[link] {
+    cursor: pointer;
+    color: #1EAEDB;
+    text-underline: NSUnderlineStyleSingle;
+}
+run[lead] {
+    color: fade(@text-color, 50%);
+    text-underline: NSUnderlineStyleNone;
+}
+// run[link^="button"] {
+//   color: @text-color;
+//   text-underline: NSUnderlineStyleNone;
+//   font-weight: 100;
+// }
+run[link^="filter"] {
+    color: @text-color;
+    text-underline: NSUnderlineStyleNone;
+}
+run[tag] {
+    font-size: @user-font-size;
+    font-style: normal;
+    font-weight: normal;
+    color: fade(@text-color, 65%);
+    text-underline: NSUnderlineStyleNone;
+}
+run[tagvalue] {
+  color: fade(@text-color, 100%);
 }

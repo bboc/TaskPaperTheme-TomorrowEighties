@@ -1,8 +1,8 @@
 // Base -----------------------------------
-@font-family: Hack, Source Code Pro;
-@font-family: -apple-user;
+//@font-family: Hack, Source Code Pro;
+//@font-family: -apple-user;
 @font-family: Lato;
-@base-font-size: 16;
+@base-font-size: 18;
 @user-font-size: $USER_FONT_SIZE;
 @ui-scale: @user-font-size / @base-font-size;
 @line-height-multiple: 1.4;
@@ -59,7 +59,7 @@ editor {
     // item-handle-size: 6;
     item-indent: 15px * @ui-scale;
     caret-width: floor(4 * @ui-scale);
-    caret-color: @1____;
+    caret-color: darken(@1____,20%);
     handle-color: @guide-color;
     drop-indicator-color: @tint-color;
     invisibles-color: @invisibles-color;
@@ -76,45 +76,29 @@ editor {
 
 item[data-type=project] {
   font-size: floor(26 * @ui-scale);
+  paragraph-spacing-before: 15;
+  paragraph-spacing-after: 3;
+  font-weight: 900;
+  color: fade(@project-color, 80%);
 }
 
 item[depth=1][data-type=project] {
-    font-weight: 900;
     color: @project-color;
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
     > run[content] {
-        text-decoration: underline;
+        text-decoration: none;
     }
 }
 item[depth=2][data-type=project] {
-    font-weight: 900;
     font-size: floor(22 * @ui-scale);
-    // font-size: 17;
-    color: fade(@project-color, 100%);
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
 }
 item[depth=3][data-type=project] {
-    font-weight: 900;
     font-size: floor(20 * @ui-scale);
-    color: fade(@project-color, 100%);
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
 }
 item[depth=4][data-type=project] {
-    font-weight: 900;
     font-size: floor(18 * @ui-scale);
-    color: fade(@project-color, 100%);
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
 }
 item[depth=5][data-type=project] {
-    font-weight: 900;
     font-size: floor(16 * @ui-scale);
-    color: fade(@project-color, 100%);
-    paragraph-spacing-before: 20;
-    paragraph-spacing-after: 3;
 }
 item[data-ol][data-type=project],
 item[data-ul][data-type=project] {
@@ -126,6 +110,7 @@ item[data-ul][data-type=project] {
 }
 item[data-type="task"] {
     font-style: normal;
+    paragraph-spacing-after: 0;
 }
 item[data-type="note"] {
     // font-size: 14;
@@ -133,69 +118,6 @@ item[data-type="note"] {
     line-height-multiple: 1;
     paragraph-spacing-after: 5;
     font-style: italic;
-}
-
-// Project Styles
-item[data-section][data-type=project] {
-  > run[tag] {
-    color: @bg_color;
-    text-decoration: none;
-  }
-}
-item[data-metadata][data-type=project] {
-  color: @neutral;
-  font-size: floor(18 * @ui-scale);
-  > run[tag] {
-    color: @bg_color;
-  }
-}
-item[data-status="open"][data-type=project],
-item[data-status="active"][data-type=project],
-item[data-status="ongoing"][data-type=project] {
-  color: @4____;
-}
-item[data-status="hold"][data-type=project] {
-  color: @7____;
-}
-item[data-defer][data-type=project] {
-  color: fade(@7____, 35%);
-}
-item[data-dueToday][data-type=project] {
-  color: @2____;
-}
-item[data-dueTomorrow][data-type=project] {
-  color: @3____;
-}
-item[data-pastDue][data-type=project] {
-  color: @1____;
-}
-item[data-status="cancelled"][data-type=project] {
-  color: fade(@1____, 35%);
-  > run[content] {
-      text-strikethrough: NSUnderlineStyleSingle;
-      text-strikethrough-color: fade(@1____, 10%);
-      color: fade(@1____, 35%);
-  }
-  > run[tag] {
-      text-strikethrough: NSUnderlineStyleSingle;
-      text-strikethrough-color: fade(@1____, 10%);
-      color: fade(@1____, 35%);
-  }
-}
-item[data-status="closed"][data-type=project],
-item[data-status="delivered"][data-type=project],
-item[data-status="completed"][data-type=project] {
-  color: fade(@text-color, 35%);
-  > run[content] {
-      text-strikethrough: NSUnderlineStyleSingle;
-      text-strikethrough-color: fade(@text-color, 10%);
-      color: fade(@text-color, 35%);
-  }
-  > run[tag] {
-      text-strikethrough: NSUnderlineStyleSingle;
-      text-strikethrough-color: fade(@text-color, 10%);
-      color: fade(@text-color, 35%);
-  }
 }
 
 
@@ -446,6 +368,73 @@ item[data-done] {
         color: fade(@text-color, 35%);
     }
 }
+
+// Project Tag Styles -----------------------------------
+
+item[data-section][data-type=project] {
+  > run[tag] {
+    color: @bg_color;
+    text-decoration: none;
+  }
+}
+item[data-metadata][data-type=project] {
+  color: @neutral;
+  font-size: floor(18 * @ui-scale);
+  > run[tag] {
+    color: @bg_color;
+  }
+}
+item[data-status="open"][data-type=project],
+item[data-status="active"][data-type=project],
+item[data-status="ongoing"][data-type=project] {
+  color: @4____;
+}
+item[data-status="hold"][data-type=project] {
+  color: @7____;
+}
+item[data-defer][data-type=project] {
+  color: fade(@7____, 35%);
+}
+item[data-dueToday][data-type=project] {
+  color: @2____;
+}
+item[data-dueTomorrow][data-type=project] {
+  color: @3____;
+}
+item[data-pastDue][data-type=project] {
+  color: @1____;
+}
+item[data-status="cancelled"][data-type=project] {
+  color: fade(@1____, 35%);
+  > run[content] {
+      text-strikethrough: NSUnderlineStyleSingle;
+      text-strikethrough-color: fade(@1____, 10%);
+      color: fade(@1____, 35%);
+  }
+  > run[tag] {
+      text-strikethrough: NSUnderlineStyleSingle;
+      text-strikethrough-color: fade(@1____, 10%);
+      color: fade(@1____, 35%);
+  }
+}
+item[data-status="closed"][data-type=project],
+item[data-status="delivered"][data-type=project],
+item[data-status="completed"][data-type=project] {
+  color: fade(@text-color, 35%);
+  > run[content] {
+      text-strikethrough: NSUnderlineStyleSingle;
+      text-strikethrough-color: fade(@text-color, 10%);
+      color: fade(@text-color, 35%);
+  }
+  > run[tag] {
+      text-strikethrough: NSUnderlineStyleSingle;
+      text-strikethrough-color: fade(@text-color, 10%);
+      color: fade(@text-color, 35%);
+  }
+}
+
+// -------------------------------------------------------
+
 run[link] {
     cursor: pointer;
     color: #1EAEDB;
