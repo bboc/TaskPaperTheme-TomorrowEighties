@@ -1,0 +1,49 @@
+Theme Development:
+	This file can be used to demonstrate the  2morrow-80ies Theme
+	Tasks, Notes and Tags:
+		- this is an ordinary task 
+			and here's a note for the task above 
+			and another note tagged as note @note
+			and then a flagged note, which is kind of handy in some situations @flag
+			behold the hyperlink http://test.de and the file link ./yay.txt
+		- this task is due today @today
+		- this task, however, is already done @done
+		- here's a somewhat important task, so it is flagged @flag
+		- and this task should have been done already @overdue
+		- a task that is waiting for some one else, and needs follow-up @waitingFor(Godot) @f_up(2022-01-01)
+		- this task has a due date @due(2022-01-01)
+		- a task that has a context and is deferred  @context(work) @defer(2071-10-20)
+		- also, the priority can be set to high @priority(high)
+			- or low  @priority(medium)
+			- or whatever @priority(whatever)
+		- do this maybe @maybe
+		- some key deliverable @keyDeliverable
+		- an agenda(-item?)  @agenda
+		- some collapsed items
+			- collapse the parent item to see the collapsed bullet
+	Project Levels:
+		Some nested sub projects to demonstrate formatting of projects on different levels.
+		Sub Project Level 2:
+			- a task
+			Sub Project Level 3:
+				- a task
+				Sub Project Level 4+:
+					- a task
+	Project Status:
+		An Ongoing project:  @status(ongoing)
+		An Active Project: @status(active)
+		An Open Project: @status(open)
+		A Metadata Project: @metadata(this is metadata)
+		A Section: @section(99)
+	Project Schedule:
+		A Deferred Prioject: @defer
+		A Project Due Today: @dueToday
+		A Project Past Due: @pastDue
+		A Project Due Tomorrow: @dueTomorrow
+	Prioject Status (2):
+		A Cancelled Project: @status(cancelled)
+		A Closed Project: @status(closed)
+		A Delivered Prioject: @status(delivered)
+		A Completed Project: @status(completed)
+
+
