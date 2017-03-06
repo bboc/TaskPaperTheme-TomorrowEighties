@@ -2,11 +2,13 @@
 	Themes:
 		- change project font (less bold)
 		- fix project spacing
+		- after decision: maybe eliminate styles for ol, ul, metadata etc. @done(2017-03-06)
 	Configuration:
-		- remove  unnecessary tags 
-		- remove unnecessary
+		- remove  unnecessary tags @done(2017-03-02)
+		- remove and streamline searches
+			- decide what to do with @ol @ul @metadata @done(2017-03-06)
 	Scripts:
 		- test scripts 
 	Other:
-		- update ready
+		- update README
 		- create new images when style is finished

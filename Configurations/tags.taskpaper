@@ -1,4 +1,4 @@
 This is a configuration outline. Use it to store tags that you want to show (or always exclude) in the sidebar for all TaskPaper documents.
 
-Include Tags: @agenda @capacity @clarity-build @clarity-run @clarity-training @due  @flag @priority @maybe @waitingFor @f_up @status @report @reccurence @role @done @description @inbox @impact @benefit @ol @ul @metadata @keyDeliverable @inbox @section @accomplishment
+Include Tags:  @bigRock  @driver @due  @estimate @flag @priority @maybe @waitingFor @f_up @status @report  @inbox @today @tomorrow @5min @15min @30min @1h @2h
 Exclude Tags: @search

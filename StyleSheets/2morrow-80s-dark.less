@@ -14,14 +14,15 @@
 @fg_color: #cccccc;
 @neutral: #808080;
 
-@1____: #f2777a;
-@2____: #f99157;
-@3____: #ffcc66;
-@4____: #99cc99;
-@5____: #66cccc;
-@6____: #6699cc;
-@7____: #cc99cc;
+@red: #f2777a;
+@orange: #f99157;
+@yellow: #ffcc66;
+@green: #99cc99;
+@cyan: #66cccc;
+@blue: #6699cc;
+@violet: #cc99cc;
 
+@strikethrough-fade: 10%;
 
 // Base colors -----------------------------------
 @project-color: @fg_color;
@@ -31,11 +32,12 @@
 @tag-color: fade(@fg_color, 65%);
 
 // UI Colors -----------------------------------
-@tint-color: @1____;
+@tint-color: @red;
 @interface-color: @tint-color;
 @selection-color: @_selection;
 @invisibles-color: fade(@tint-color, 50%);
 @guide-color: darken(@fg_color, 26%);
+@caret-color: darken(@red,20%);
 
 window {
   appearance: NSAppearanceNameVibrantDark;
@@ -45,10 +47,9 @@ searchbar {
   background-color: #3b3b3b;
   placeholder-color: fade(@text-color, 65%);
   color: @text-color;
-  secondary-text-color: @4____;
-  error-text-color: @1____;
+  secondary-text-color: @green;
+  error-text-color: @red;
 }
-
 
 editor {
     color: @text-color;
@@ -59,7 +60,7 @@ editor {
     // item-handle-size: 6;
     item-indent: 15px * @ui-scale;
     caret-width: floor(4 * @ui-scale);
-    caret-color: darken(@1____,20%);
+    caret-color: @caret-color;
     handle-color: @guide-color;
     drop-indicator-color: @tint-color;
     invisibles-color: @invisibles-color;
@@ -100,8 +101,7 @@ item[depth=4][data-type=project] {
 item[depth=5][data-type=project] {
     font-size: floor(16 * @ui-scale);
 }
-item[data-ol][data-type=project],
-item[data-ul][data-type=project] {
+[data-type=project] {
     font-weight: 900;
     font-size: floor(16 * @ui-scale);
     color: @text-color;
@@ -120,7 +120,6 @@ item[data-type="note"] {
     font-style: italic;
 }
 
-
 // Handle styles -----------------------------------
 item {
   // handle-size: 8;
@@ -131,8 +130,8 @@ item {
 }
 
 item[collapsed] {
-  handle-color: @6____;
-  handle-border-color: @6____;
+  handle-color: @blue;
+  handle-border-color: @blue;
 }
 
 item[filtered] {
@@ -150,15 +149,29 @@ item[leaf] {
   handle-border-color: none;
 }
 
-
 item[mouseOverHandle] {
   handle-size: @handle-size + (1.5 * @ui-scale);
 }
 
 // Tag styles -----------------------------------
 
-item[data-ol][data-context][data-type=project],
-item[data-ul][data-context][data-type=project],
+item[data-estimate] {
+    > run[tag] {
+      color: fade(@violet, 50%);
+    }
+    > run[tagvalue] {
+      color: fade(@violet, 100%);
+    }	
+}
+[data-driver][data-type=note]  {
+    font-size: @user-font-size;
+    color: @cyan;
+    > run[tag] {
+        color: fade(@cyan, 30%);
+    }
+}
+
+[data-context][data-type=project],
 item[data-context] {
     > run[tag] {
         color: fade(@text-color, 65%);
@@ -167,132 +180,90 @@ item[data-context] {
       color: fade(@text-color, 100%);
     }
     > run[tagvalue="home"] {
-      color: fade(@4____, 100%);
+      color: fade(@green, 100%);
     }
     > run[tagvalue="work"] {
-      color: fade(@6____, 100%);
+      color: fade(@blue, 100%);
     }
     > run[tagvalue="IO"] {
-      color: fade(@7____, 100%);
+      color: fade(@violet, 100%);
     }
     > run[tagvalue="errands"] {
-      color: fade(@3____, 100%);
+      color: fade(@yellow, 100%);
     }
 }
-item[data-ol][data-due][data-type=project],
-item[data-ul][data-due][data-type=project],
+[data-due][data-type=project],
 item[data-due] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
     color: @text-color;
     > run[tag] {
-        // color: fade(@3____, 65%);
+        // color: fade(@yellow, 65%);
     }
     > run[tagvalue] {
       color: @text-color;
     }
 }
-item[data-ol][data-flag][data-type=project],
-item[data-ul][data-flag][data-type=project],
-item[data-flag] {
+[data-flag][data-type=project],
+item[data-flag],
+[data-driver][data-type=note]  {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
-    color: @5____;
+    color: @cyan;
     > run[tag] {
-        color: fade(@5____, 65%);
+        color: fade(@cyan, 65%);
     }
     > run[tagvalue] {
       color: @text-color;
     }
 }
-item[data-ol][data-today][data-type=project],
-item[data-ul][data-today][data-type=project],
+[data-today][data-type=project],
 item[data-today],
-item[data-ol][data-dueToday][data-type=project],
-item[data-ul][data-dueToday][data-type=project],
-item[data-dueToday] {
+[data-dueToday][data-type=project],
+item[data-dueToday],
+item[data-bigRock] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
-    color: @2____;
+    color: @orange;
     > run[tag] {
-        color: fade(@2____, 65%);
+        color: fade(@orange, 65%);
     }
     > run[tagvalue] {
       color: @text-color;
     }
 }
-item[data-ol][data-dueTomorrow][data-type=project],
-item[data-ul][data-dueTomorrow][data-type=project],
+[data-dueTomorrow][data-type=project],
 item[data-dueTomorrow] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
-    color: @3____;
+    color: @yellow;
     > run[tag] {
-        color: fade(@3____, 65%);
+        color: fade(@yellow, 65%);
     }
     > run[tagvalue] {
       color: @text-color;
     }
 }
-item[data-ol][data-overdue][data-type=project],
-item[data-ul][data-overdue][data-type=project],
+[data-overdue][data-type=project],
 item[data-overdue],
-item[data-ol][data-pastDue][data-type=project],
-item[data-ul][data-pastDue][data-type=project],
+[data-pastDue][data-type=project],
 item[data-pastDue] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
-    color: @1____;
+    color: @red;
     > run[tag] {
-        color: fade(@1____, 65%);
+        color: fade(@red, 65%);
     }
     // Just the tag values (between the parentheses).
     > run[tagvalue] {
       color: fade(@text-color, 100%);
-    }
-    > run[tagvalue="home"] {
-      color: fade(@4____, 100%);
-    }
-    > run[tagvalue="work"] {
-      color: fade(@6____, 100%);
-    }
-    > run[tagvalue="IO"] {
-      color: fade(@7____, 100%);
-    }
-    > run[tagvalue="errands"] {
-      color: fade(@3____, 100%);
     }
 }
-item[data-ol][data-priority][data-type=project],
-item[data-ul][data-priority][data-type=project],
+[data-priority][data-type=project],
 item[data-priority] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
-    color: @1____;
+    color: @red;
     > run[tag] {
-        color: fade(@1____, 65%);
+        color: fade(@red, 65%);
     }
     // Just the tag values (between the parentheses).
     > run[tagvalue] {
       color: fade(@text-color, 100%);
-    }
-    > run[tagvalue="home"] {
-      color: fade(@4____, 100%);
-    }
-    > run[tagvalue="work"] {
-      color: fade(@6____, 100%);
-    }
-    > run[tagvalue="IO"] {
-      color: fade(@7____, 100%);
-    }
-    > run[tagvalue="errands"] {
-      color: fade(@3____, 100%);
     }
     > run[tagvalue=high],
     > run[tagvalue="1"],
@@ -304,58 +275,41 @@ item[data-priority] {
       font-weight: bold;
     }
 }
-item[data-ol][data-waitingFor][data-type=project],
-item[data-ul][data-waitingFor][data-type=project],
+[data-waitingFor][data-type=project],
 item[data-waitingFor],
-item[data-ol][data-f_up][data-type=project],
-item[data-ul][data-f_up][data-type=project],
-item[data-f_up],
-item[data-ol][data-agenda][data-type=project],
-item[data-ul][data-agenda][data-type=project],
-item[data-agenda] {
+[data-f_up][data-type=project],
+item[data-f_up] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
-    color: fade(@7____, 65%);
+    color: fade(@violet, 65%);
     > run[tag] {
-        // color: fade(@7____, 65%);
+        // color: fade(@violet, 65%);
     }
 }
-item[data-ol][data-defer][data-type=project],
-item[data-ul][data-defer][data-type=project],
+[data-defer][data-type=project],
 item[data-defer] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
-    color: fade(@7____, 35%);
+    color: fade(@violet, 35%);
     > run[tag] {
-        // color: fade(@7____, 35%);
+        // color: fade(@violet, 35%);
     }
 }
-item[data-ol][data-maybe][data-type=project],
-item[data-ul][data-maybe][data-type=project],
+[data-maybe][data-type=project],
 item[data-maybe] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
     color: fade(@text-color, 35%);
     > run[tag] {
         color: fade(@text-color, 35%);
     }
 }
-item[data-ol][data-search][data-type=project],
-item[data-ul][data-search][data-type=project],
+[data-search][data-type=project],
 item[data-search] {
     font-size: @user-font-size;
-    // font-style: normal;
-    // font-weight: normal;
     color: @text-color;
     > run[tag] {
         color: fade(@text-color, 65%);
     }
 }
-item[data-ol][data-done][data-type=project],
-item[data-ul][data-done][data-type=project],
+[data-done][data-type=project],
 item[data-done] {
     > run[content] {
         text-strikethrough: NSUnderlineStyleSingle;
@@ -371,15 +325,7 @@ item[data-done] {
 
 // Project Tag Styles -----------------------------------
 
-item[data-section][data-type=project] {
-  > run[tag] {
-    color: @bg_color;
-    text-decoration: none;
-  }
-}
-item[data-metadata][data-type=project] {
-  color: @neutral;
-  font-size: floor(18 * @ui-scale);
+item[data-meta][data-type=project] {
   > run[tag] {
     color: @bg_color;
   }
@@ -387,34 +333,34 @@ item[data-metadata][data-type=project] {
 item[data-status="open"][data-type=project],
 item[data-status="active"][data-type=project],
 item[data-status="ongoing"][data-type=project] {
-  color: @4____;
+  color: @green;
 }
 item[data-status="hold"][data-type=project] {
-  color: @7____;
+  color: @violet;
 }
 item[data-defer][data-type=project] {
-  color: fade(@7____, 35%);
+  color: fade(@violet, 35%);
 }
 item[data-dueToday][data-type=project] {
-  color: @2____;
+  color: @orange;
 }
 item[data-dueTomorrow][data-type=project] {
-  color: @3____;
+  color: @yellow;
 }
 item[data-pastDue][data-type=project] {
-  color: @1____;
+  color: @red;
 }
 item[data-status="cancelled"][data-type=project] {
-  color: fade(@1____, 35%);
+  color: fade(@red, 35%);
   > run[content] {
       text-strikethrough: NSUnderlineStyleSingle;
-      text-strikethrough-color: fade(@1____, 10%);
-      color: fade(@1____, 35%);
+      text-strikethrough-color: fade(@red, @strikethrough-fade);
+      color: fade(@red, 35%);
   }
   > run[tag] {
       text-strikethrough: NSUnderlineStyleSingle;
-      text-strikethrough-color: fade(@1____, 10%);
-      color: fade(@1____, 35%);
+      text-strikethrough-color: fade(@red, @strikethrough-fade);
+      color: fade(@red, 35%);
   }
 }
 item[data-status="closed"][data-type=project],
@@ -423,12 +369,12 @@ item[data-status="completed"][data-type=project] {
   color: fade(@text-color, 35%);
   > run[content] {
       text-strikethrough: NSUnderlineStyleSingle;
-      text-strikethrough-color: fade(@text-color, 10%);
+      text-strikethrough-color: fade(@text-color, @strikethrough-fade);
       color: fade(@text-color, 35%);
   }
   > run[tag] {
       text-strikethrough: NSUnderlineStyleSingle;
-      text-strikethrough-color: fade(@text-color, 10%);
+      text-strikethrough-color: fade(@text-color, @strikethrough-fade);
       color: fade(@text-color, 35%);
   }
 }

@@ -1,11 +1,13 @@
 Theme Development:
 	This file can be used to demonstrate the  2morrow-80ies Theme
 	Tasks, Notes and Tags:
+		this is a note that is formatted as a driver @driver
 		- this is an ordinary task 
 			and here's a note for the task above 
 			and another note tagged as note @note
 			and then a flagged note, which is kind of handy in some situations @flag
 			behold the hyperlink http://test.de and the file link ./yay.txt
+		- this task is a big rock, meaning that it is essential @bigRock
 		- this task is due today @today
 		- this task, however, is already done @done
 		- here's a somewhat important task, so it is flagged @flag
@@ -17,11 +19,9 @@ Theme Development:
 			- or low  @priority(medium)
 			- or whatever @priority(whatever)
 		- do this maybe @maybe
-		- some key deliverable @keyDeliverable
-		- an agenda(-item?)  @agenda
 		- some collapsed items
 			- collapse the parent item to see the collapsed bullet
-	Project Levels:
+Project Levels:
 		Some nested sub projects to demonstrate formatting of projects on different levels.
 		Sub Project Level 2:
 			- a task
@@ -30,20 +30,24 @@ Theme Development:
 				Sub Project Level 4+:
 					- a task
 	Project Status:
-		An Ongoing project:  @status(ongoing)
-		An Active Project: @status(active)
+		An Ongoing Project:  @status(ongoing)
+		An Active Project With Estimate: @status(active)  @estimate(1h)
 		An Open Project: @status(open)
-		A Metadata Project: @metadata(this is metadata)
-		A Section: @section(99)
+		A Meta Project: @meta
+			Meta projects are containers for projects, or contain documentation for projects, or both
 	Project Schedule:
-		A Deferred Prioject: @defer
+		A Deferred Project: @defer
 		A Project Due Today: @dueToday
 		A Project Past Due: @pastDue
 		A Project Due Tomorrow: @dueTomorrow
-	Prioject Status (2):
+	Project Status (2):
 		A Cancelled Project: @status(cancelled)
 		A Closed Project: @status(closed)
 		A Delivered Prioject: @status(delivered)
 		A Completed Project: @status(completed)
+
+
+
+
 
 
